@@ -14,22 +14,14 @@ const domainToDTO = (listProblems) => {
             })
         ]
     }
-
 }
-
 
 module.exports = {
     domainToDTO,
 }
-
-
 
 // const DTOToDomain = ({}) => {
 
 // } 
 
 
-// module.exports = {
-//     DTOToDomain,
-//     domainToDTO
-// }

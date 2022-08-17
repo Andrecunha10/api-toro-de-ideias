@@ -1,5 +1,7 @@
 const listProblemsUseCase = require('../core/problems/listProblems.UseCase')
+const exhibitProblemsUseCase = require('../core/problems/exhibitProblems.UseCase')
 const listProblemsMapper = require('../mapper/problems/listProblems.mapper')
+const exhibitProblemsMapper = require('../mapper/problems/exhibitProblems.mapper')
 
 const status = ['open', 'close']
 
@@ -12,7 +14,7 @@ const listProblems = (req, res) => {
         })
     }
 
-    const problems = listProblemsUseCase(query.status)
+    const ucResult = listProblemsUseCase(query.status)
 
 
     if (Object.keys(problems).length === 0) {
@@ -21,10 +23,26 @@ const listProblems = (req, res) => {
         })
     } 
     
-    res.send(listProblemsMapper.domainToDTO(problems))
+    res.send(listProblemsMapper.domainToDTO(ucResult))
     
 }
 
-module.exports = listProblems
+const exhibitProblems = (req, res) => {
+    const params = req.params
+
+    if(!params.id || params.id.includes(' ')){
+        return res.status(400).json({
+            mensagem: "Problem ID not informed",
+        }) 
+    }
+    const ucResult = exhibitProblemsUseCase(params.id)
+
+    res.send(ucResult)
+}
+
+module.exports = {
+    listProblems,
+    exhibitProblems
+}
 
 
