@@ -1,3 +1,5 @@
+const problemsEntity = require('../../../core/problems/problemsEntity')
+
 const data = [{
     "name": "Hora Extra",
     "shortDescription": "Elevado custo com horas extras",
@@ -27,21 +29,55 @@ const data = [{
     "shortDescription": "O que podemos melhorar no Produto X?",
     "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at eros convallis, congue justo ut, iaculis ex. Proin vel sollicitudin purus. Sed id blandit risus. In vitae ultricies nisi. Phasellus nibh orci, pellentesque sit amet molestie sed, condimentum id est. Pellentesque a iaculis est. Suspendisse potenti. Integer sed nisl laoreet, rhoncus ex eu, auctor tellus. Fusce nunc nibh, tempus id hendrerit eu, vestibulum in libero.",
     "departament": "Marketing",
-    "status": "close",
+    "status": "closed",
     "id": 4
   }]
 
 
 const search = (status) => {
+    let resultSearch = data
     if (status) {
-        const resultSearch = data.filter(item => item.status == status)
-        return resultSearch
+        resultSearch = data.filter(item => item.status == status)        
     }
-    return data
+    return resultSearch.map(item => {
+        const {
+            id,
+            name,
+            description,
+            shortDescription,
+            departament,
+            status
+        } = item
+        return problemsEntity.build(
+            id,
+            name,
+            description,
+            shortDescription,
+            departament,
+            status
+        )
+    })
 }
 
-const findById = (id) => {
-   return data.find(item => item.id == id)
+const findById = (uid) => {
+    const {
+        id,
+        name,
+        description,
+        shortDescription,
+        departament,
+        status
+    } = data.find(item => item.id == uid)
+
+    return problemsEntity.build(
+        id,
+        name,
+        description,
+        shortDescription,
+        departament,
+        status
+    )
+
 }
 module.exports = {
     search,

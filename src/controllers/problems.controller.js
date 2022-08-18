@@ -3,7 +3,7 @@ const exhibitProblemsUseCase = require('../core/problems/exhibitProblems.UseCase
 const listProblemsMapper = require('../mapper/problems/listProblems.mapper')
 const exhibitProblemsMapper = require('../mapper/problems/exhibitProblems.mapper')
 
-const status = ['open', 'close']
+const status = ['open', 'closed']
 
 const listProblems = (req, res) => {
     const query = req.query
@@ -17,7 +17,7 @@ const listProblems = (req, res) => {
     const ucResult = listProblemsUseCase(query.status)
 
 
-    if (Object.keys(problems).length === 0) {
+    if (Object.keys(ucResult).length === 0) {
         return res.status(400).json({
         mensagem: "Problem Not Found",
         })
@@ -37,7 +37,7 @@ const exhibitProblems = (req, res) => {
     }
     const ucResult = exhibitProblemsUseCase(params.id)
 
-    res.send(ucResult)
+    res.send(exhibitProblemsMapper.domainToDTO(ucResult))
 }
 
 module.exports = {
