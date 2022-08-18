@@ -9,7 +9,7 @@ const suggestionsRepo = require('../../infra/data/repositories/suggestionsRepo')
       console.log('problem dont found')
       return undefined
     }
-    const listSuggestionByProblemId = suggestionsRepo(id)
+    const listSuggestionByProblemId = suggestionsRepo.search(id)
 
     problem.suggestions = listSuggestionByProblemId
 

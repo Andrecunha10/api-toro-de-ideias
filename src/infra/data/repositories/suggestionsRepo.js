@@ -1,3 +1,5 @@
+const suggestionsEntity = require('../../../core/suggestions/suggestionsEntity')
+
 const data = [
     {
       "message": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce at eros convallis, congue justo ut, iaculis ex. Proin vel sollicitudin purus. Sed id blandit risus. In vitae ultricies nisi. Phasellus nibh orci, pellentesque sit amet molestie sed, condimentum id est.",
@@ -58,13 +60,32 @@ const data = [
   ]
 
 const search = (problemId) => {
+    let resultSearch = data
     if (problemId) {
-        const resultSearch = data.filter(item => item.problemId == problemId)
-        return resultSearch
+        resultSearch = data.filter(item => item.problemId == problemId)
     }
-    return data
+    return resultSearch.map(item => {
+        const {
+            id,
+            message,
+            name,
+            departament,
+            problemId,
+            userId,
+        } = item
+        return new suggestionsEntity(
+            id,
+            message,
+            name,
+            departament,
+            problemId,
+            userId,
+        )
+    })
 }
 
-module.exports = search
+module.exports = {
+    search
+}
 
 
