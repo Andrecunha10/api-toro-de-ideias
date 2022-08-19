@@ -29,12 +29,7 @@ const listProblems = (req, res) => {
 
 const exhibitProblems = (req, res) => {
     const params = req.params
-
-    if(!params.id || params.id.includes(' ')){
-        return res.status(400).json({
-            mensagem: "Problem ID not informed",
-        }) 
-    }
+    
     const ucResult = exhibitProblemsUseCase(params.id)
 
     res.send(exhibitProblemsMapper.domainToDTO(ucResult))
