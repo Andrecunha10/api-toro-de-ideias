@@ -13,7 +13,8 @@ const domainToDTO = (exhibitProblems) => {
                     name: item.name,
                     departament: item.departament,
                     userId: item.userId,
-                    id: item.id
+                    id: item.id,
+                    problemId: item.problemId
                 }
             })
         ]

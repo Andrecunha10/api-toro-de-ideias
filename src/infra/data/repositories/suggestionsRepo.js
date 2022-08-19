@@ -84,8 +84,22 @@ const search = (problemId) => {
     })
 }
 
+const includeSuggestionData = (body, problemId) => {
+  const suggestion = {
+    id: data.length + 1,
+    message: body.message,
+    name: body.name,
+    departament: body.departament,
+    problemId,
+    userId: body.userId
+}
+  data.push(suggestion)
+  return suggestion
+}
+
 module.exports = {
-    search
+    search,
+    includeSuggestionData
 }
 
 

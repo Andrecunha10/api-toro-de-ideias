@@ -7,6 +7,7 @@ const validateBody = (req, res, next) => {
         message: joi.string().min(10).max(255).required(),
         name: joi.string().min(3).max(13).required(),
         departament: joi.string().max(3).required(),
+        userId: joi.number().required()
     })
 
     const bodyResult = bodySchema.validate(body)
