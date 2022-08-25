@@ -1,4 +1,4 @@
-const suggestionsEntity = require('../../../core/suggestions/suggestionsEntity')
+const SuggestionsEntity = require('../../../core/suggestions/suggestionsEntity')
 
 const data = [
     {
@@ -7,6 +7,7 @@ const data = [
       "departament": "Dev",
       "problemId": 1,
       "userId": 2,
+      "inclusionDate": '2022-08-01',
       "id": 1
     },
     {
@@ -15,6 +16,7 @@ const data = [
       "departament": "Mkt",
       "problemId": 1,
       "userId": 1,
+      "inclusionDate": '2022-08-01',
       "id": 2
     },
     {
@@ -23,6 +25,7 @@ const data = [
       "departament": "Dev",
       "problemId": 1,
       "userId": 2,
+      "inclusionDate": '2022-08-01',
       "id": 3
     },
     {
@@ -31,6 +34,7 @@ const data = [
       "departament": "Mkt",
       "problemId": 1,
       "userId": 1,
+      "inclusionDate": '2022-08-01',
       "id": 4
     },
     {
@@ -39,6 +43,7 @@ const data = [
       "departament": "Dev",
       "problemId": 3,
       "userId": 2,
+      "inclusionDate": '2022-08-01',
       "id": 7
     },
     {
@@ -47,6 +52,7 @@ const data = [
       "departament": "Dev",
       "problemId": 1,
       "userId": 2,
+      "inclusionDate": '2022-08-01',
       "id": 8
     },
     {
@@ -55,6 +61,7 @@ const data = [
       "departament": "RH",
       "problemId": 2,
       "userId": 3,
+      "inclusionDate": '2022-08-01',
       "id": 9
     }
   ]
@@ -72,29 +79,39 @@ const search = (problemId) => {
             departament,
             problemId,
             userId,
+            inclusionDate,
+            deleteDate,
         } = item
-        return new suggestionsEntity(
-            id,
-            message,
-            name,
-            departament,
-            problemId,
-            userId,
+
+        return SuggestionsEntity.build(
+          id,
+          message,
+          name,
+          departament,
+          problemId,
+          userId,
+          inclusionDate,
+          deleteDate,
         )
     })
 }
 
-const includeSuggestionData = (body, problemId) => {
-  const suggestion = {
+const includeSuggestionData = (suggestion) => {
+  const newSuggestion = {
+    ...suggestion,
     id: data.length + 1,
-    message: body.message,
-    name: body.name,
-    departament: body.departament,
-    problemId,
-    userId: body.userId
+    inclusionDate:  '2022-08-23'
 }
-  data.push(suggestion)
-  return suggestion
+  data.push(newSuggestion)
+  return SuggestionsEntity.build(
+    newSuggestion.id,
+    newSuggestion.message,
+    newSuggestion.name,
+    newSuggestion.departament,
+    newSuggestion.problemId,
+    newSuggestion.userId,
+    newSuggestion.inclusionDate
+  )
 }
 
 module.exports = {

@@ -69,7 +69,7 @@ const findById = (uid) => {
         status
     } = data.find(item => item.id == uid)
 
-    return problemsEntity.build(
+    const result = problemsEntity.build(
         id,
         name,
         description,
@@ -77,6 +77,10 @@ const findById = (uid) => {
         departament,
         status
     )
+    
+    return result
+
+    
 
 }
 module.exports = {

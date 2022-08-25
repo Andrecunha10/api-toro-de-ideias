@@ -12,7 +12,7 @@ const suggestionsRepo = require('../../infra/data/repositories/suggestionsRepo')
     const listSuggestionByProblemId = suggestionsRepo.search(id)
 
     problem.suggestions = listSuggestionByProblemId
-
+    
     return problem
   }
 

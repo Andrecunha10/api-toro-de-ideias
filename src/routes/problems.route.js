@@ -3,10 +3,15 @@ const { includeSuggestion } = require('../controllers/suggestionController')
 const validadeId = require('../schema/validateId')
 const validateBody = require('../schema/validateBody')
 
-const problems = (app) => {
+const problemsRoutes = (app) => {
     app.get('/problems', listProblems)
     app.get('/problems/:id', validadeId, exhibitProblems)
-    app.post('/problems/:id/suggestion', validadeId, validateBody, includeSuggestion)
+    app.post(
+        '/problems/:id/suggestion', 
+        validadeId, 
+        validateBody, 
+        includeSuggestion
+    )
 }
 
-module.exports = problems
+module.exports = problemsRoutes
