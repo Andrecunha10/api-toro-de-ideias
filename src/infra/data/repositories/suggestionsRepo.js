@@ -114,9 +114,26 @@ const includeSuggestionData = (suggestion) => {
   )
 }
 
+const findById = (suggestionId) => {
+
+  return data.find(item => {
+    return item.id == suggestionId
+})
+
+}
+
+const upDateSuggestionData = (suggestion) =>{
+
+  const changedSuggestion = data.find(item => item.id = suggestion.id)
+
+  changedSuggestion.deleteDate = suggestion.deleteDate
+}
+
 module.exports = {
     search,
-    includeSuggestionData
+    includeSuggestionData,
+    findById,
+    upDateSuggestionData
 }
 
 
