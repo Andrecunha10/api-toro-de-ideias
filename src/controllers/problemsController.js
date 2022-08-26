@@ -6,33 +6,42 @@ const exhibitProblemsMapper = require('../mapper/problems/exhibitProblems.mapper
 const status = ['open', 'closed']
 
 const listProblems = (req, res) => {
-    const query = req.query
 
-    if(!status.includes(query.status) && Object.keys(query).length !== 0){
-        return res.status(400).json({
-            mensagem: "Request Not Found",
+    try {
+
+        const query = req.query
+
+        const ucResult = listProblemsUseCase(query.status)
+        
+        res.send(listProblemsMapper.domainToDTO(ucResult))
+        
+    } catch (error) {
+
+        return res.status(error.statusCode || 500).json({
+            mensagem: error.statusCode ? error.message : "Internal Server Error"
         })
+
     }
-
-    const ucResult = listProblemsUseCase(query.status)
-
-
-    if (Object.keys(ucResult).length === 0) {
-        return res.status(400).json({
-        mensagem: "Problem Not Found",
-        })
-    } 
     
-    res.send(listProblemsMapper.domainToDTO(ucResult))
     
 }
 
 const exhibitProblems = (req, res) => {
-    const params = req.params
-    
-    const ucResult = exhibitProblemsUseCase(params.id)
 
-    res.send(exhibitProblemsMapper.domainToDTO(ucResult))
+    try {
+        const params = req.params
+    
+        const ucResult = exhibitProblemsUseCase(params.id)
+
+        res.send(exhibitProblemsMapper.domainToDTO(ucResult))
+    } catch (error) {
+
+        return res.status(error.statusCode || 500).json({
+            mensagem: error.statusCode ? error.message : "Internal Server Error"
+        })
+
+    }
+    
 }
 
 module.exports = {

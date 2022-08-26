@@ -1,13 +1,14 @@
 const problemsRepo = require('../../infra/data/repositories/problemsRepo')
 const suggestionsRepo = require('../../infra/data/repositories/suggestionsRepo')
+const {BusinessError} = require('../error/errorEntity')
 
   const exhibitProblemsUseCase = (id) => {
 
+    
     const problem = problemsRepo.findById(id)
     
     if (!problem) {
-      console.log('problem dont found')
-      return undefined
+      throw new BusinessError('Problem not found.')
     }
     const listSuggestionByProblemId = suggestionsRepo.search(id)
 

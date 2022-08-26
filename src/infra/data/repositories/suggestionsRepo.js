@@ -1,4 +1,5 @@
 const SuggestionsEntity = require('../../../core/suggestions/suggestionsEntity')
+const newDate = require('../../../util/newDate')
 
 const data = [
     {
@@ -44,7 +45,7 @@ const data = [
       "problemId": 3,
       "userId": 2,
       "inclusionDate": '2022-08-01',
-      "id": 7
+      "id": 5
     },
     {
       "message": "Eu prefiro ser, esta metamorfose ambulante.",
@@ -53,7 +54,7 @@ const data = [
       "problemId": 1,
       "userId": 2,
       "inclusionDate": '2022-08-01',
-      "id": 8
+      "id": 6
     },
     {
       "message": "Brindo a casa, brindo a vida, meus valores, minha família.",
@@ -62,7 +63,7 @@ const data = [
       "problemId": 2,
       "userId": 3,
       "inclusionDate": '2022-08-01',
-      "id": 9
+      "id": 7
     }
   ]
 
@@ -100,7 +101,7 @@ const includeSuggestionData = (suggestion) => {
   const newSuggestion = {
     ...suggestion,
     id: data.length + 1,
-    inclusionDate:  '2022-08-23'
+    inclusionDate:  newDate()
 }
   data.push(newSuggestion)
   return SuggestionsEntity.build(

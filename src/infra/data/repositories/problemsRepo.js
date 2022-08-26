@@ -59,72 +59,12 @@ const search = (status) => {
     })
 }
 
-const findById = (uid) => {
-    const {
-        id,
-        name,
-        description,
-        shortDescription,
-        departament,
-        status
-    } = data.find(item => item.id == uid)
-
-    const result = problemsEntity.build(
-        id,
-        name,
-        description,
-        shortDescription,
-        departament,
-        status
-    )
+const findById = (problemId) => {
     
-    return result
-
+    return data.find(item => item.id == problemId)
     
-
 }
 module.exports = {
     search,
     findById
 }
-  
-// const search = ({ status }) => {
-
-//     let resultFromDB = data;
-
-//     if (status) {
-//         resultFromDB =  data.filter(item => item.status == status)                    
-//     }
-    
-//     //todo: extrair logica de conversao de dataObejct para Entity     
-//     return resultFromDB.map(item => {
-
-//         const { 
-//             id,
-//             descricao,
-//             status 
-//         } = item;
-
-//         return CursoEntity.build(
-//             id,
-//             descricao,
-//             status
-//         )
-//     });
-
-// }
-
-// const findById = (id) => {
-
-//     return data.find(item => {
-//         return item.id == id
-//     })
-
-// }
-
-// module.exports = {
-
-//     search,
-//     findById
-
-// }
