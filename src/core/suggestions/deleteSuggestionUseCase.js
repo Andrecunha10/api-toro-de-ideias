@@ -11,8 +11,11 @@ const deleteSuggestionUseCase = (suggestionId) =>{
        throw new BusinessError('Suggestion not found.')
        
     }
+    if(suggestion.deletedAt) {
+        throw new BusinessError('Suggestion already deleted.')
+    }
 
-    suggestion.deleteDate = newDate()
+    suggestion.deletedAt = newDate()
 
     upDateSuggestionData(suggestion)
     

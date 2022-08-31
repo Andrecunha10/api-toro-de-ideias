@@ -19,8 +19,8 @@ const domaintoDto = (suggestion) => {
             departament: suggestion.departament,
             problemId: suggestion.problemId,
             userId: suggestion.userId,
-            inclusionDate: suggestion.inclusionDate,
-            deleteDate: suggestion.deleteDate,
+            createdAt: suggestion.createdAt,
+            deletedAt: suggestion.deletedAt,
             status: suggestion.status
         }
     }

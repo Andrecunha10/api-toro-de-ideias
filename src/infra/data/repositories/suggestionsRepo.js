@@ -8,7 +8,7 @@ const data = [
       "departament": "Dev",
       "problemId": 1,
       "userId": 2,
-      "inclusionDate": '2022-08-01',
+      "createdAt": '2022-08-01',
       "id": 1
     },
     {
@@ -17,7 +17,7 @@ const data = [
       "departament": "Mkt",
       "problemId": 1,
       "userId": 1,
-      "inclusionDate": '2022-08-01',
+      "createdAt": '2022-08-01',
       "id": 2
     },
     {
@@ -26,7 +26,7 @@ const data = [
       "departament": "Dev",
       "problemId": 1,
       "userId": 2,
-      "inclusionDate": '2022-08-01',
+      "createdAt": '2022-08-01',
       "id": 3
     },
     {
@@ -35,7 +35,7 @@ const data = [
       "departament": "Mkt",
       "problemId": 1,
       "userId": 1,
-      "inclusionDate": '2022-08-01',
+      "createdAt": '2022-08-01',
       "id": 4
     },
     {
@@ -44,7 +44,7 @@ const data = [
       "departament": "Dev",
       "problemId": 3,
       "userId": 2,
-      "inclusionDate": '2022-08-01',
+      "createdAt": '2022-08-01',
       "id": 5
     },
     {
@@ -53,7 +53,7 @@ const data = [
       "departament": "Dev",
       "problemId": 1,
       "userId": 2,
-      "inclusionDate": '2022-08-01',
+      "createdAt": '2022-08-01',
       "id": 6
     },
     {
@@ -62,7 +62,7 @@ const data = [
       "departament": "RH",
       "problemId": 2,
       "userId": 3,
-      "inclusionDate": '2022-08-01',
+      "createdAt": '2022-08-01',
       "id": 7
     }
   ]
@@ -80,8 +80,8 @@ const search = (problemId) => {
             departament,
             problemId,
             userId,
-            inclusionDate,
-            deleteDate,
+            createdAt,
+            deletedAt,
         } = item
 
         return SuggestionsEntity.build(
@@ -91,8 +91,8 @@ const search = (problemId) => {
           departament,
           problemId,
           userId,
-          inclusionDate,
-          deleteDate,
+          createdAt,
+          deletedAt,
         )
     })
 }
@@ -101,7 +101,7 @@ const includeSuggestionData = (suggestion) => {
   const newSuggestion = {
     ...suggestion,
     id: data.length + 1,
-    inclusionDate:  newDate()
+    createdAt:  newDate()
 }
   data.push(newSuggestion)
   return SuggestionsEntity.build(
@@ -111,7 +111,7 @@ const includeSuggestionData = (suggestion) => {
     newSuggestion.departament,
     newSuggestion.problemId,
     newSuggestion.userId,
-    newSuggestion.inclusionDate
+    newSuggestion.createdAt
   )
 }
 
@@ -127,7 +127,7 @@ const upDateSuggestionData = (suggestion) =>{
 
   const changedSuggestion = data.find(item => item.id = suggestion.id)
 
-  changedSuggestion.deleteDate = suggestion.deleteDate
+  changedSuggestion.deletedAt = suggestion.deletedAt
 }
 
 module.exports = {

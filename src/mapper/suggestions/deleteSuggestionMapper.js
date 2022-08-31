@@ -1,6 +1,6 @@
 const domainToDTO = () => {
     return {
-        message: 'Suggestion successfully registred.'
+        message: 'Suggestion successfully deleted.'
     }
    
 }

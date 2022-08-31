@@ -15,8 +15,8 @@ const domainToDTO = (exhibitProblems) => {
                     userId: item.userId,
                     id: item.id,
                     problemId: item.problemId,
-                    inclusionDate: item.inclusionDate,
-                    deleteDate: item.deleteDate,
+                    createdAt: item.createdAt,
+                    deletedAt: item.deletedAt,
                     status: item.status                    
                 }
             })

@@ -6,8 +6,8 @@ module.exports = class SuggestionsEntity {
     departament,
     problemId,
     userId,
-    inclusionDate,
-    deleteDate,
+    createdAt,
+    deletedAt,
     status
   ){
     this.id = id
@@ -16,8 +16,8 @@ module.exports = class SuggestionsEntity {
     this.departament = departament,
     this.problemId = problemId,
     this.userId = userId
-    this.inclusionDate = inclusionDate,
-    this.deleteDate = deleteDate,
+    this.createdAt = createdAt,
+    this.deletedAt = deletedAt,
     this.status = status
   }
 
@@ -28,13 +28,13 @@ module.exports = class SuggestionsEntity {
     departament,
     problemId,
     userId,
-    inclusionDate,
-    deleteDate,
+    createdAt,
+    deletedAt,
 ) {
 
 
     let status = 'active';
-    if (deleteDate && deleteDate !== ' ' && deleteDate !== '') {
+    if (deletedAt && deletedAt !== ' ' && deletedAt !== '') {
         status = 'deleted';
     }
 
@@ -45,8 +45,8 @@ module.exports = class SuggestionsEntity {
         departament,
         problemId,
         userId,
-        inclusionDate,
-        deleteDate,
+        createdAt,
+        deletedAt,
         status
     )
 
