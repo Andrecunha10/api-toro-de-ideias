@@ -1,7 +1,7 @@
 const includeSuggestionMaper = require('../mapper/suggestions/includeSuggestionMapper')
 const deleteSuggestionMapper = require('../mapper/suggestions/deleteSuggestionMapper')
-const includeSuggestionUseCase = require('../core/suggestions/includeSuggestionUseCase')
-const deleteSuggestionUseCase = require('../core/suggestions/deleteSuggestionUseCase')
+const includeSuggestionUseCase = require('../../core/suggestions/includeSuggestionUseCase')
+const deleteSuggestionUseCase = require('../../core/suggestions/deleteSuggestionUseCase')
 
 const includeSuggestion = (req, res) => {
 

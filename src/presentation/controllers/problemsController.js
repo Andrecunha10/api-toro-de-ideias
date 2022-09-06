@@ -1,5 +1,5 @@
-const listProblemsUseCase = require('../core/problems/listProblemsUseCase')
-const exhibitProblemsUseCase = require('../core/problems/exhibitProblemsUseCase')
+const listProblemsUseCase = require('../../core/problems/listProblemsUseCase')
+const exhibitProblemsUseCase = require('../../core/problems/exhibitProblemsUseCase')
 const listProblemsMapper = require('../mapper/problems/listProblems.mapper')
 const exhibitProblemsMapper = require('../mapper/problems/exhibitProblems.mapper')
 
